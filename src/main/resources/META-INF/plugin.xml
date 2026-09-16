@@ -1,0 +1,34 @@
+<idea-plugin>
+    <id>dev.husainmukadam.flutteradb</id>
+    <name>Flutter ADB</name>
+    <vendor url="https://husainmukadam.dev">Husain Mukadam</vendor>
+    <description>ADB app actions (uninstall, kill, start, restart, clear data, permissions) for Flutter projects in Android Studio, without needing a synced Android module.</description>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.android</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <notificationGroup id="Flutter ADB" displayType="BALLOON"/>
+    </extensions>
+
+    <actions>
+        <group id="FlutterAdb.Group" text="Flutter ADB" popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <action id="FlutterAdb.Uninstall" class="dev.husainmukadam.flutteradb.actions.UninstallAction" text="Uninstall App"/>
+            <action id="FlutterAdb.Kill" class="dev.husainmukadam.flutteradb.actions.KillAction" text="Kill App"/>
+            <action id="FlutterAdb.Start" class="dev.husainmukadam.flutteradb.actions.StartAction" text="Start App"/>
+            <action id="FlutterAdb.Restart" class="dev.husainmukadam.flutteradb.actions.RestartAction" text="Restart App"/>
+            <action id="FlutterAdb.Clear" class="dev.husainmukadam.flutteradb.actions.ClearDataAction" text="Clear App Data"/>
+            <action id="FlutterAdb.ClearRestart" class="dev.husainmukadam.flutteradb.actions.ClearDataAndRestartAction" text="Clear App Data and Restart"/>
+            <action id="FlutterAdb.Grant" class="dev.husainmukadam.flutteradb.actions.GrantPermissionsAction" text="Grant Permissions"/>
+            <action id="FlutterAdb.Revoke" class="dev.husainmukadam.flutteradb.actions.RevokePermissionsAction" text="Revoke Permissions"/>
+            <separator/>
+            <action id="FlutterAdb.SetPackage" class="dev.husainmukadam.flutteradb.actions.SetPackageAction" text="Set Package Name…"/>
+        </group>
+
+        <action id="FlutterAdb.QuickList" class="dev.husainmukadam.flutteradb.actions.QuickListAction" text="Flutter ADB Operations Popup">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="control shift alt D"/>
+        </action>
+    </actions>
+</idea-plugin>
